@@ -1,0 +1,12 @@
+extends layout
+block content  
+    h1 TXT2HTML!
+    form(action="/read", method="post" ,enctype="multipart/form-data")
+        input(type="file",name="txt",accept=".txt".required)
+        input(type="submit", value="Convert!")
+    each file in files
+        ul 
+            li 
+                a(href=`/read/${file.filename}`) #{file.originalname}
+    else 
+        h4 no uploaded text file
